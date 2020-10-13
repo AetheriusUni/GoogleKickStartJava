@@ -17,10 +17,21 @@ public class Solution
                 
                 for(int i = 0; i < n; i++)
                 {
-                    
+                    int ai = in.nextInt();
+                    if(ai > n)
+                    {
+                        ai = n;
+                    }
+                    buckets[ai]++;
                 }
-            
+            int total = 0;
+            for(int i = n; i > 0; i--)
+            {
+                int today = Math.min(k, buckets[i]);
+                total += today;
+                buckets[i-1] += buckets[i] - today;
             }
+            System.out.println("Case #" + t + ": " + total);
         }
     }
 }
